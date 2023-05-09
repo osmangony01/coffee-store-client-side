@@ -1,8 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import './Home.css';
 import { FaEye, FaPen, FaTrash } from 'react-icons/fa';
+import Coffee from '../Coffee/Coffee';
 
 const Home = () => {
+
+    const coffee_data = useLoaderData();
+
     return (
         <div >
             <div className='heading'>
@@ -18,40 +22,9 @@ const Home = () => {
                     <div><Link to="/add-coffee"><button className='btn-coffee'>Add Coffee</button></Link></div>
                 </div>
                 <div className='show-coffee'>
-                    <div className='coffee-item'>
-                        <div>
-                            <img src="/images/1.png" alt="" />
-                        </div>
-                        <div className='coffee-item-info'>
-                            <div className='coffee-item-des'>
-                                <p><b>Name:</b> X</p>
-                                <p><b>Chef:</b> y</p>
-                                <p><b>Price:</b> 220</p>
-                            </div>
-                            <div>
-                                <div><Link to="/"><button className='view-btn'><FaEye color={'white'}></FaEye></button></Link></div>
-                                <div><Link><button className='update-btn'><FaPen color={'white'}></FaPen></button></Link></div>
-                                <div><Link><button className='delete-btn'><FaTrash color={'white'}></FaTrash></button></Link></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='coffee-item'>
-                        <div>
-                            <img src="/images/1.png" alt="" />
-                        </div>
-                        <div className='coffee-item-info'>
-                            <div className='coffee-item-des'>
-                                <p><b>Name:</b> X</p>
-                                <p><b>Chef:</b> y</p>
-                                <p><b>Price:</b> 220</p>
-                            </div>
-                            <div>
-                                <div><Link to="/"><button className='view-btn'><FaEye color={'white'}></FaEye></button></Link></div>
-                                <div><Link><button className='update-btn'><FaPen color={'white'}></FaPen></button></Link></div>
-                                <div><Link><button className='delete-btn'><FaTrash color={'white'}></FaTrash></button></Link></div>
-                            </div>
-                        </div>
-                    </div>
+                    {
+                        coffee_data.map(coffee => <Coffee key={coffee._id} coffee={coffee}></Coffee>)
+                    }
                 </div>
             </div>
         </div>
