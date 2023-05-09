@@ -1,11 +1,12 @@
 import { Link, useLoaderData } from 'react-router-dom';
 import './Home.css';
-import { FaEye, FaPen, FaTrash } from 'react-icons/fa';
 import Coffee from '../Coffee/Coffee';
+import { useState } from 'react';
 
 const Home = () => {
 
-    const coffee_data = useLoaderData();
+    const loadedCoffee = useLoaderData();
+    const [coffees, setCoffees] = useState(loadedCoffee);
 
     return (
         <div >
@@ -23,7 +24,12 @@ const Home = () => {
                 </div>
                 <div className='show-coffee'>
                     {
-                        coffee_data.map(coffee => <Coffee key={coffee._id} coffee={coffee}></Coffee>)
+                        coffees.map(coffee => <Coffee
+                            key={coffee._id}
+                            coffee={coffee}
+                            coffees={coffees}
+                            setCoffees={setCoffees}>
+                        </Coffee>)
                     }
                 </div>
             </div>
