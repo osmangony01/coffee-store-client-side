@@ -15,7 +15,7 @@ const Home = () => {
             <div className='coffee-list'>
                 <div className='coffee-heading'>
                     <h2>Our Popular Product</h2>
-                    <div><button className='btn-coffee'>Add Coffee</button></div>
+                    <div><Link to="/add-coffee"><button className='btn-coffee'>Add Coffee</button></Link></div>
                 </div>
                 <div className='show-coffee'>
                     <div className='coffee-item'>
